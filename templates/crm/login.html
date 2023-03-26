@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class="container mx-auto flex justify-center mt-4">
+        {% load crispy_forms_tags %}
+        <div class="md:w-6/12">
+            <form action="" class="flex gap-8 flex-col" method="post">
+                {%csrf_token%}
+                {{form|crispy}}
+                <div class="my-2 w-full">
+                    <input type="submit" value="Login" class="px-4 w-full py-2 bg-green-500 hover:bg-green-600 duration-150 text-white">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock main %}

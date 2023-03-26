@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container mx-auto my-4 flex justify-center">
+    <form action="" class="flex gap-4 md:w-6/12">
+        {%csrf_token%}
+        <input type="text" placeholder="Search posts (by name , category , author ...)" class="placeholder:font-sans rounded-md px-2 outline-none border-2 py-1 border-green-300 focus:border-4 focus:border-green-500 w-full">
+        <input type="submit" value="Search" class="px-4 py-2 text-white bg-green-500 hover:bg-green-600 duration-150">
+    </form>
+</div>
+<div class="container flex gap-4 mx-auto my-4">
+    <div class="w-9/12 flex flex-col gap-8">        
+        {% for post in posts %}
+            <div class="p-3 w-full  bg-slate-300 rounded-md">
+                <div class="flex flex-col gap-2">
+                    <div class="flex gap-4 items-center">
+                        <img class="rounded-full w-[70px] h-[70px]" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="">
+                        <div class="flex flex-col gap-1">
+                            <p class="text-xl font-bold">{{post.auther.username}}</p>
+                            <p class="">{{post.createdAt}}</p>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl my-2 font-bold text-green-500" ># {{post.title}}</h1>
+                </div>
+                {{post.content|safe}}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="w-3/12 flex flex-col ">
+        <p class="text-2xl text-black font-bold my-4">Trending Categories</p>
+        {% for category in categories %}
+            <div class="p-2">
+                <a href="{%url 'post_category_listview'%}?category={{category.id}}" class="text-lg font-bold text-green-500" ># {{category.cat_name}}</a>
+                {{post.content|safe}}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main %}
