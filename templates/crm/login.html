@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block main %}
-    <div class="container mx-auto flex justify-center mt-4">
+    <div class="container mx-auto flex justify-center mt-10">
         {% load crispy_forms_tags %}
         <div class="md:w-6/12">
-            <form action="" class="flex gap-8 flex-col" method="post">
+            <form action="" class="flex gap-8 flex-col p-2 border-2 border-green-300 rounded-md" method="post">
+                <p class="text-4xl my-4 text-right text-green-500">Login and add your post</p>
                 {%csrf_token%}
                 {{form|crispy}}
                 <div class="my-2 w-full">

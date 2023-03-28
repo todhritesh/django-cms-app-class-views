@@ -4,12 +4,12 @@
 <div class="container mx-auto my-4 flex justify-center">
     <form action="" class="flex gap-4 md:w-6/12">
         {%csrf_token%}
-        <input type="text" placeholder="Search posts (by name , category , author ...)" class="placeholder:font-sans rounded-md px-2 outline-none border-2 py-1 border-green-300 focus:border-4 focus:border-green-500 w-full">
+        <input name="search" type="text" placeholder="Search posts (by name , category , author ...)" class="placeholder:font-sans rounded-md px-2 outline-none border-2 py-1 border-green-300 focus:border-4 focus:border-green-500 w-full">
         <input type="submit" value="Search" class="px-4 py-2 text-white bg-green-500 hover:bg-green-600 duration-150">
     </form>
 </div>
-<div class="container flex gap-4 mx-auto my-4">
-    <div class="w-9/12 flex flex-col gap-8">        
+<div class="container flex gap-4 mx-auto my-4 h-[80vh]">
+    <div class="w-9/12 flex flex-col gap-20 overflow-y-auto overflow-x-hidden">        
         {% for post in posts %}
             <div class="p-3 w-full  bg-slate-300 rounded-md">
                 <div class="flex flex-col gap-2">
@@ -26,7 +26,7 @@
             </div>
         {% endfor %}
     </div>
-    <div class="w-3/12 flex flex-col ">
+    <div class="w-3/12 flex flex-col  overflow-y-auto overflow-x-hidden">
         <p class="text-2xl text-black font-bold my-4">Trending Categories</p>
         {% for category in categories %}
             <div class="p-2">
